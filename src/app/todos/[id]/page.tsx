@@ -12,7 +12,9 @@ import { TodoDelete } from '@/entities/todo/ui/TodoDelete';
 export const dynamic = 'force-dynamic';
 
 async function getTodoById(id: string) {
-  const response = await fetch(`${jsonPlaceholderAPI}/${id}`);
+  const response = await fetch(`${jsonPlaceholderAPI}/${id}`, {
+    cache: 'no-store'
+  });
 
   if (!response.ok) {
     throw new Error('Failed to fetch todo');
