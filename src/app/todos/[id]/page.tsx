@@ -26,8 +26,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
-  const post = await getTodoById(id);
+  const post = await getTodoById(params.id);
 
   return {
     title: post.title
