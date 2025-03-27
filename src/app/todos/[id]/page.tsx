@@ -24,7 +24,7 @@ async function getTodoById(id: string) {
 }
 
 type Props = {
-  params: { id: string };
+  params: Record<string, string>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
