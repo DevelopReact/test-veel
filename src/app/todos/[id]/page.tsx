@@ -11,7 +11,7 @@ import { TodoDelete } from '@/entities/todo/ui/TodoDelete';
 
 export const dynamic = 'force-dynamic';
 
-async function getTodoById(id: string) {
+async function getTodoById(id: number) {
   const response = await fetch(`${jsonPlaceholderAPI}/${id}`, {
     cache: 'no-store'
   });
@@ -24,19 +24,15 @@ async function getTodoById(id: string) {
 }
 
 type Props = {
-  params: Record<string, string>;
+  params: { id: string };
 };
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getTodoById(params.id);
-
-  return {
-    title: post.title
-  };
-}
+export const metadata: Metadata = {
+  title: 'todo'
+};
 
 export default async function TodoDetailPage({ params }: Props) {
-  const todo = await getTodoById(params.id);
+  const todo = await getTodoById(Number(params.id));
 
   if (!todo) {
     return (
