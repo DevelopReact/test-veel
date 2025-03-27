@@ -22,11 +22,11 @@ async function getTodoById(id: string) {
 }
 
 type Props = {
-  params: Promise<{ id: string }>;
+  params: { id: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = await params;
+  const { id } = params;
   const post = await getTodoById(id);
 
   return {
