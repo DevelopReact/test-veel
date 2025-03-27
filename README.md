@@ -1,3 +1,7 @@
+Deployment page: https://test-veel-git-master-andreytantsiuras-projects.vercel.app/
+
+
+Describe task:
 Test Task for Veel: Todo App using Next.js and JSONPlaceholder API
 Objective:
 Create a simple Todo app using Next.js and JSONPlaceholder API. The app should allow users to:
