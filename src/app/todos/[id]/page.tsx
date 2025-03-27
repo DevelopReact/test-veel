@@ -24,12 +24,12 @@ async function getTodoById(id: number) {
 }
 
 type Props = {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { id } = params;
-  const post = await getTodoById(Number(params.id));
+  const { id } = await params;
+  const post = await getTodoById(Number(id));
 
   return {
     title: post.title
@@ -37,7 +37,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function TodoDetailPage({ params }: Props) {
-  const todo = await getTodoById(Number(params.id));
+  const { id } = await params;
+  const todo = await getTodoById(Number(id));
 
   if (!todo) {
     return (
