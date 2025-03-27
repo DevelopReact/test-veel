@@ -27,9 +27,14 @@ type Props = {
   params: { id: string };
 };
 
-export const metadata: Metadata = {
-  title: 'todo'
-};
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { id } = params;
+  const post = await getTodoById(Number(params.id));
+
+  return {
+    title: post.title
+  };
+}
 
 export default async function TodoDetailPage({ params }: Props) {
   const todo = await getTodoById(Number(params.id));
