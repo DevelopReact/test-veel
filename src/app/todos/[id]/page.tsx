@@ -35,12 +35,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default async function TodoDetailPage({
-  params
-}: {
-  params: { id: string };
-}) {
-  const todo: Todo = await getTodoById(params.id);
+export default async function TodoDetailPage({ params }: Props) {
+  const todo = await getTodoById(params.id);
+
+  if (!todo) {
+    return (
+      <div className='flex flex-col gap-5 justify-center items-center h-screen'>
+        <p className='text-red-500'>Todo not found</p>
+      </div>
+    );
+  }
 
   return (
     <div className='flex flex-col gap-5 justify-center items-center h-screen'>
